@@ -80,3 +80,21 @@ To run the Docker container:
 ```bash
 docker run -p 8080:8080 java-cicd-app
 ``` 
+
+## Next Steps
+
+### Configure a Sonar Server locally
+
+```
+adduser sonarqube
+apt install unzip
+sudo su - sonarqube 
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-10.4.1.88267 
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-10.4.1.88267
+cd sonarqube-10.4.1.88267/bin/linux-x86-64/
+./sonar.sh start
+```
+
+Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
