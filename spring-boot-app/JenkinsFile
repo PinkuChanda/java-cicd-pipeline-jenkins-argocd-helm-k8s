@@ -5,18 +5,15 @@ pipeline {
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
-  stages {
-    stage('Checkout') {
+    stages {
+      stage('Checkout') {
       steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/PinkuChanda/java-cicd-pipeline-jenkins-argocd-helm-k8s.git'
+        checkout scm
       }
     }
     stage('Build and Test') {
       steps {
-        sh 'ls -ltr'
-        // build the project and create a JAR file
-        sh 'cd spring-boot-app && mvn clean package'
+        sh 'mvn -f spring-boot-app/pom.xml clean package'
       }
     }
     stage('Static Code Analysis') {
