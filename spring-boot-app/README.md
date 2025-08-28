@@ -86,7 +86,7 @@ docker run -p 8080:8080 java-cicd-app
 ### Configure a Sonar Server locally
 
 ```
-adduser sonarqube
+adduser sonarqube (Do it on root User)
 apt install unzip
 sudo su - sonarqube 
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip

@@ -1,14 +1,13 @@
-# Use OpenJDK 17 as base image
-FROM openjdk:17-jdk-slim
+# You can change this base image to anything else
+# But make sure to use the correct version of Java
+FROM adoptopenjdk/openjdk11:alpine-jre
 
-# Set working directory
-WORKDIR /app
+# Simply the artifact path
+ARG artifact=target/spring-boot-web.jar
 
-# Copy the JAR file
-COPY target/java-cicd-app-0.0.1-SNAPSHOT.jar app.jar
+WORKDIR /opt/app
 
-# Expose port 8080
-EXPOSE 8080
+COPY ${artifact} app.jar
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"] 
+# This should not be changed
+ENTRYPOINT ["java","-jar","app.jar"]
